@@ -22,7 +22,7 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('apps.pages.urls', namespace='pages')),
-    path('', include('apps.accounts.urls', namespace='accounts')),
+    path('accounts/', include('apps.accounts.urls', namespace='accounts')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

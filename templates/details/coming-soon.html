@@ -1,8 +1,10 @@
-{% extends 'layout/header-coming-soon.html' %}
+{% extends 'layout/base.html' %}
 {% load static %}
 {% block title %}Coming soon{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/jquery.countdown.css' %}">
+{% endblock %}
 {% block content %}
-
     <div class="soon">
         <div class="container">
             <div class="row">
@@ -17,7 +19,8 @@
                                 Subscribe to our newsletter to stay updated on our progress.</p>
                             <form action="#">
                                 <div class="input-group mb-5">
-                                    <input type="email" class="form-control bg-transparent" placeholder="Enter your Email Address" required>
+                                    <input type="email" class="form-control bg-transparent"
+                                           placeholder="Enter your Email Address" required>
                                     <div class="input-group-append">
                                         <button class="btn btn-outline-primary-2" type="submit">
                                             <span>SUBSCRIBE</span>
@@ -27,41 +30,43 @@
                                 </div>
                             </form>
                             <div class="social-icons justify-content-center mb-0">
-                                <a href="#" class="social-icon" target="_blank" title="Facebook"><i class="icon-facebook-f"></i></a>
-                                <a href="#" class="social-icon" target="_blank" title="Twitter"><i class="icon-twitter"></i></a>
-                                <a href="#" class="social-icon" target="_blank" title="Instagram"><i class="icon-instagram"></i></a>
-                                <a href="#" class="social-icon" target="_blank" title="Youtube"><i class="icon-youtube"></i></a>
-                                <a href="#" class="social-icon" target="_blank" title="Pinterest"><i class="icon-pinterest"></i></a>
+                                <a href="#" class="social-icon" target="_blank" title="Facebook"><i
+                                        class="icon-facebook-f"></i></a>
+                                <a href="#" class="social-icon" target="_blank" title="Twitter"><i
+                                        class="icon-twitter"></i></a>
+                                <a href="#" class="social-icon" target="_blank" title="Instagram"><i
+                                        class="icon-instagram"></i></a>
+                                <a href="#" class="social-icon" target="_blank" title="Youtube"><i
+                                        class="icon-youtube"></i></a>
+                                <a href="#" class="social-icon" target="_blank" title="Pinterest"><i
+                                        class="icon-pinterest"></i></a>
                             </div><!-- End .soial-icons -->
                         </div><!-- End .soon-content-wrapper -->
                     </div><!-- End .soon-content -->
                 </div><!-- End .col-md-9 col-lg-8 -->
             </div><!-- End .row -->
         </div><!-- End .container -->
-        <div class="soon-bg bg-image" style="background-image: url({% static 'assets/images/backgrounds/soon-bg.jpg' %})"></div>
+        <div class="soon-bg bg-image"
+             style="background-image: url({% static 'assets/images/backgrounds/soon-bg.jpg' %})"></div>
         <!-- End .soon-bg bg-image -->
-    </div>
-    {% endblock %}<!-- End .soon -->
+    </div><!-- End .soon -->
+{% endblock %}
 {% block extra_js %}
-    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
-    <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+    <script>
+        $(function () {
+            "use strict";
+            if ($.fn.countdown) {
+                $('.coming-countdown').countdown({
+                    until: new Date(2025, 1, 9), // 7th month = August / Months 0 - 11 (January  - December)
+                    format: 'DHMS',
+                    padZeroes: true
+                });
+
+                // Pause
+                // $('.coming-countdown').countdown('pause');
+            }
+        });
+    </script>
     <script src="{% static 'assets/js/jquery.plugin.min.js' %}"></script>
     <script src="{% static 'assets/js/jquery.countdown.min.js' %}"></script>
 {% endblock %}
-    <script src="{% static 'assets/js/main.js' %}"></script>
-    <script>
-    $(function() {
-        "use strict";
-        if ($.fn.countdown) {
-            $('.coming-countdown').countdown({
-                until: new Date(2021, 7, 20), // 7th month = August / Months 0 - 11 (January  - December)
-                format: 'DHMS',
-                padZeroes: true
-            });
-
-            // Pause
-            // $('.coming-countdown').countdown('pause');
-        }
-    });
-    </script>
-
